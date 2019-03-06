@@ -1,0 +1,18 @@
+{
+  "name": "demo_express_login",
+  "version": "1.0.0",
+  "description": "Purpose is to demo the implementation of login funcitonality with express server",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "author": "Pawan",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  },
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
