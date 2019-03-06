@@ -3,6 +3,8 @@ const bodyParser = require('body-parser')
 const passport = require('passport')
 const users = require('./routes/api/users')
 const app = express()
+const cors = require('cors')
+app.use(cors())
 // Bodyparser middleware
 app.use(
   bodyParser.urlencoded({
