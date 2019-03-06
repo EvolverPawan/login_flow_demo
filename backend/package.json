@@ -5,7 +5,10 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "client-install": "npm install --prefix client",
+    "client": "npm start --prefix ../frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Pawan",
   "license": "ISC",
@@ -14,6 +17,7 @@
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "concurrently": "^4.1.0",
     "express": "^4.16.4",
     "is-empty": "^1.2.0",
     "jsonwebtoken": "^8.5.0",
