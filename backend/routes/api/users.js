@@ -23,7 +23,10 @@ router.post('/login', (req, res) => {
   // Check if user exists
   let user = User.users.find(x => x.username === username)
   if (!user) {
-    return res.status(404).json({ emailnotfound: 'username not found' })
+    return res.status(404).json({
+      success: false,
+      msg: 'username not found'
+    })
   }
   // Check password
   bcrypt.compare(password, user.password).then(isMatch => {
@@ -57,7 +60,10 @@ router.post('/login', (req, res) => {
     } else {
       return res
         .status(400)
-        .json({ passwordincorrect: 'Password incorrect' })
+        .json({
+          success: false,
+          msg: 'Password incorrect'
+        })
     }
   })
 })
