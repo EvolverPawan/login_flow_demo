@@ -1,14 +1,17 @@
 import config from '../config'
+import firebaseApp from '../Firebase'
+// import { compose } from '../../../../../../Library/Caches/typescript/3.3/node_modules/redux'
 
 export const userService = {
   login,
-  logout
+  logout,
+  signup
 }
 
 function login (username, password) {
   const requestOptions = {
     method: 'POST',
-    headers: { 
+    headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({ username, password })
@@ -22,12 +25,30 @@ function login (username, password) {
     })
 }
 
+function signup (username, password) {
+  if (process.env.REACT_APP_ENABLE_FIREBASE_AUTHENTICATION === 'TRUE') {
+    return firebaseApp.auth().createUserWithEmailAndPassword(username, password)
+    // .then(function (user) {
+    //   const currentUser = firebaseApp.auth().currentUser
+    //   console.log('currentUser', currentUser)
+    //   console.log('user', user)
+    //   return user
+    // }, function (error) {
+    //   const errorCode = error.code
+    //   const errorMessage = error.message
+    //   console.log('errorCode:', errorCode, ' errorMessage:', errorMessage)
+    //   return error
+    // })
+  }
+}
+
 function logout () {
   // remove user from local storage to log user out
   localStorage.removeItem('user')
 }
 
 function handleResponse (response) {
+  console.log('response', response)
   return response.text().then(text => {
     const data = text && JSON.parse(text)
     if (!response.ok) {

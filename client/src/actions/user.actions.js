@@ -5,9 +5,30 @@ import { history } from '../helpers'
 
 export const userActions = {
   login,
-  logout
+  logout,
+  signup
 }
 
+function signup (username, password) {
+  return dispatch => {
+    dispatch(request({ username }))
+    userService.signup(username, password)
+      .then(
+        user => {
+          dispatch(success(user))
+          history.push('/')
+          dispatch(alertActions.success('Registration successful. Please login'))
+        },
+        error => {
+          dispatch(failure(error.toString()))
+          dispatch(alertActions.error(error.toString()))
+        }
+      )
+  }
+  function request (user) { return { type: userConstants.SIGNUP_REQUEST, user } }
+  function success (user) { return { type: userConstants.SIGNUP_SUCCESS, user } }
+  function failure (error) { return { type: userConstants.SIGNUP_FAILURE, error } }
+}
 function login (username, password) {
   return dispatch => {
     dispatch(request({ username }))
