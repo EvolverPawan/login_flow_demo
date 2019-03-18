@@ -8,7 +8,8 @@
     "server": "nodemon server.js",
     "client-install": "npm install --prefix ../client",
     "client": "npm start --prefix ../client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "test": "node_modules/mocha/bin/mocha ./tests"
   },
   "author": "Pawan",
   "license": "ISC",
@@ -17,11 +18,14 @@
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
     "concurrently": "^4.1.0",
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "is-empty": "^1.2.0",
     "jsonwebtoken": "^8.5.0",
+    "mocha": "^6.0.2",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "validator": "^10.11.0"
