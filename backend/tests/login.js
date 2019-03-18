@@ -8,7 +8,7 @@ let loginDetails = {
   'password': '123456'
 }
 describe(' Test Login ', () => {
-  it('it should Register, Login, and check token', (done) => {
+  it('Login, and check token', (done) => {
     chai.request(server)
       .post('/api/users/login')
       .send(loginDetails)

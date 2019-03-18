@@ -9,7 +9,7 @@
     "client-install": "npm install --prefix ../client",
     "client": "npm start --prefix ../client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "test": "node_modules/mocha/bin/mocha ./tests"
+    "test": "node_modules/mocha/bin/mocha --exit ./tests"
   },
   "author": "Pawan",
   "license": "ISC",
